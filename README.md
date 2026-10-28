@@ -48,103 +48,54 @@ La arquitectura del sistema está diseñada en capas para separar responsabilida
 
 ```mermaid
 flowchart LR
-    A[Usuarios / Consultorio / Administración] --> B[Frontend]
+    A[Usuarios] --> B[Frontend]
     B --> C[API REST]
-    C --> D[Servicios de Negocio]
+    C --> D[Servicios]
     D --> E[(MySQL)]
-    D --> F[Motor de IA Jurídica]
-    D --> G[Servicio de Auditoría]
-    G --> E
-    F --> Eonsultorio, reducir tiempos de atención manual y fortalecer la calidad del servicio jurídico mediante procesos estructurados, automatizados y supervisados.
-
-## 2. Objetivo del Proyecto
-
-Facilitar la gestión de solicitudes jurídicas mediante:
-
-- Automatización del flujo de atención de casos.
-- Acompañamiento inteligente con IA jurídica.
-- Control centralizado de casuística y documentación.
-- Auditoría y trazabilidad de cada acción y decisión.
-- Seguimiento académico y administrativo de los procesos.
-- Mejor toma de decisiones a partir de información organizada y analizable.
-
-## 3. Problema a Resolver
-
-Los consultorios jurídicos universitarios suelen manejar solicitudes, documentos, casos y seguimientos de forma dispersa y poco estructurada. Esta falta de coordinación genera:
-
-- Duplicidad de información.
-- Pérdida de trazabilidad.
-- Dificultad para priorizar casos.
-- Procesos manuales lentos y propensos a errores.
-- Falta de indicadores para evaluar la gestión jurídica académica.
-
-JURICTAP propone una solución integral que permita profesionalizar la operación del consultorio mediante un enfoque digital, seguro y escalable.
-
-## 4. Arquitectura de Solución
-
-### 4.1 Vista de Alto Nivel
-
-La arquitectura del sistema está diseñada en capas para separar responsabilidades, facilitar mantenimiento y permitir crecimiento futuro.
-
-```mermaid
-flowchart LR
-    A[Cliente / Usuario] --> B[Frontend]
-    B --> C[API REST]
-    C --> D[Servicios de Negocio]
-    D --> E[Base de Datos MySQL]
-    D --> F[Motor de IA Jurídica]
-    D --> G[Servicio de Auditoría]
+    D --> F[IA Juridica]
+    D --> G[Auditoria]
     G --> E
     F --> E
 ```
 
-### 4.2 Capas de la Arquitectura
+## Capas de la Arquitectura
 
-#### Capa de Presentación
-- Aplicación web para usuarios del consultorio.
-- Interfaz para la gestión de casos, consultas y seguimiento.
-- Acceso orientado a roles y permisos.
+### 1. Capa de Presentación
+Interfaz web para la gestión de la plataforma. Permite visualizar casos, consultar información, registrar solicitudes y controlar procesos de forma intuitiva y segura.
 
-#### Capa de Aplicación / API
-- Exposición de servicios REST para clientes web y módulos internos.
-- Validación, control de autenticación y orquestación de procesos.
-- Encapsulamiento de lógica funcional del negocio.
+### 2. Capa de Aplicación
+API REST que orquesta los servicios del sistema, valida datos, coordina procesos y expone funcionalidades para el frontend y módulos internos.
 
-#### Capa de Dominio
-- Gestión de clientes, solicitudes, casos y procesos jurídicos.
-- Reglas de negocio relacionadas con atención, prioridad y seguimiento.
-- Lógica de IA aplicada al análisis documental y sugerencias jurídicas.
+### 3. Capa de Dominio
+Contiene la lógica de negocio del sistema: creación de casos, seguimiento, estado, prioridad, distribución de responsabilidades y reglas de operación.
 
-#### Capa de Persistencia
-- Almacenamiento seguro y estructurado de información.
-- Base de datos relacional MySQL para casos, usuarios, documentos y trazas.
+### 4. Capa de Persistencia
+Gestión de datos con MySQL para almacenar usuarios, roles, solicitudes, documentos, eventos, trazas y resultados de procesos.
 
-#### Capa de Auditoría y Seguridad
-- Registro de eventos, cambios y accesos.
-- Control de autenticación y autorización.
-- Identificación de actividades relevantes para cumplimiento y seguimiento.
+### 5. Capa de Seguridad y Auditoría
+Control de acceso, autenticación, autorización, trazabilidad y registro de actividades para garantizar transparencia y seguridad institucional.
 
-## 5. Módulos del Sistema
+## Módulos Principales
 
-### 5.1 Gestión de Solicitudes
-Permite registrar, categorizar y priorizar solicitudes jurídicas recibidas por los usuarios del consultorio.
+### Gestión de Solicitudes
+Permite registrar, categorizar y priorizar las solicitudes recibidas por el consultorio.
 
-### 5.2 Gestión de Casos
-Administra la evolución de cada caso, incluyendo fases, responsables, documentos y seguimiento de actividades.
+### Gestión de Casos
+Administra el ciclo de vida de cada caso desde la creación hasta su cierre, con seguimiento de responsables, avances y documentación.
 
-### 5.3 IA Jurídica
-Apoya la clasificación, resumen y sugerencia de soluciones mediante análisis inteligente de contenido legal y contextual.
+### IA Jurídica
+Soporte inteligente para análisis documental, identificación de patrones, clasificación de casos y sugerencias legales contextualizadas.
 
-### 5.4 Auditoría
-Registra acciones críticas, cambios de estado, acceso a información y trazabilidad histórica para asegurar transparencia.
+### Auditoría y Trazabilidad
+Registro histórico de actividades y cambios para asegurar responsabilidad, control y cumplimiento.
 
-### 5.5 Administración de Usuarios
-Control de perfiles, permisos y responsabilidades por rol dentro del consultorio universitario.
+### Administración de Usuarios
+Gestión de perfiles, permisos y roles para distintos actores del sistema.
 
-### 5.6 Reportes y Seguimiento Académico
-Genera indicadores para evaluar volumen de casos, tiempos de atención y evolución del servicio jurídico.
+### Reportes y Dashboard
+Visualización de métricas clave: volumen de casos, tiempos de atención, estados, rendimiento y seguimiento académico.
 
-## 6. Tecnologías Propuestas
+## Tecnologías
 
 ### Backend
 - Node.js
@@ -157,104 +108,133 @@ Genera indicadores para evaluar volumen de casos, tiempos de atención y evoluci
 
 ### Frontend
 - Bootstrap
-- Interfaces responsivas y accesibles
+- Interfaces responsivas
+- Diseño centrado en la experiencia del usuario
 
 ### Seguridad
-- Autenticación basada en tokens
-- Encriptación de credenciales
-- Control de acceso por rol
+- Autenticación con JWT
+- Encriptación de contraseñas con bcrypt
+- Control de accesos por roles
+- Validación de entradas
+- Trazabilidad de eventos
 
 ### Inteligencia Artificial
-- Integración de modelos o servicios de IA para análisis documental y apoyo jurídico
+- Integración de modelos o servicios de IA para apoyo jurídico y clasificación de información
 
-## 7. Patrones de Diseño y Calidad
+## Principios de Diseño
 
-El sistema busca aplicar buenas prácticas de arquitectura de software, tales como:
+El sistema se fundamenta en buenas prácticas de ingeniería de software como:
 
-- Separación de responsabilidades por capas.
-- APIs REST bien definidas.
-- Persistencia desacoplada de la lógica de negocio.
-- Módulos reutilizables y escalables.
-- Seguridad por diseño.
-- Auditoría en procesos críticos.
-- Preparación para evolución hacia microservicios o modularización funcional.
+- separación de responsabilidades por capas,
+- APIs REST bien definidas,
+- modularidad,
+- seguridad por diseño,
+- trazabilidad operativa,
+- mantenibilidad y escalabilidad,
+- diseño orientado a procesos institucionales.
 
-## 8. Flujos Principales
+## Flujo de Uso
 
-### Flujo de atención de una solicitud
-1. El usuario registra una nueva solicitud.
+### Atención de una solicitud
+1. El usuario registra la petición.
 2. El sistema valida la información.
-3. Se clasifica y asigna al área o responsable correspondiente.
+3. Se clasifica y asigna la solicitud.
 4. Se inicia el seguimiento del caso.
-5. Se registran actividades, documentos y decisiones.
-6. Se genera evidencia y reportes de auditoría.
+5. Se agregan documentos y evidencias.
+6. Se registra la evolución del proceso.
+7. Se genera auditoría y reportes.
 
-### Flujo de soporte con IA
-1. El sistema procesa información del caso.
-2. La IA identifica patrones, temas y posibles recomendaciones.
-3. El profesional revisa la sugerencia y valida la decisión.
-4. Se registra la acción para mantener trazabilidad.
+### Soporte con IA
+1. Se analizan los datos del caso.
+2. La IA identifica patrones y sugiere posibles enfoques.
+3. El profesional revisa la propuesta.
+4. Se valida la decisión final.
+5. La acción queda registrada en el historial del caso.
 
-## 9. Consideraciones de Seguridad
+## Requisitos del Sistema
 
-- Autenticación segura con JWT.
-- Contraseñas cifradas con Bcrypt.
-- Validación de entradas y permisos por rol.
-- Registro de acciones para auditoría.
-- Protección del acceso a información sensible.
+### Requisitos Funcionales
+- Registro de usuarios y roles.
+- Gestión de solicitudes y casos.
+- Control documental.
+- Seguimiento de estados.
+- Auditoría de actividades.
+- Generación de reportes.
+- Soporte con IA.
 
-## 10. Estado del Proyecto
+### Requisitos No Funcionales
+- Seguridad.
+- Escalabilidad.
+- Disponibilidad.
+- Rendimiento aceptable.
+- Facilidad de mantenimiento.
+- Trazabilidad completa.
+
+## Seguridad
+
+JURICTAP incorpora una arquitectura de seguridad orientada a la protección de datos sensibles y a la trazabilidad de operaciones críticas.
+
+Principales medidas:
+- autenticación basada en JWT,
+- cifrado de contraseñas con Bcrypt,
+- control de acceso por roles,
+- validación de entrada de datos,
+- registro de eventos y acciones del sistema,
+- protección de la información jurídica y académica.
+
+## Estado del Proyecto
 
 Estado actual: Sprint 0
 
-Se encuentra en fase inicial de definición y base arquitectónica. El enfoque actual está orientado a:
+Se encuentra en la fase inicial de definición de la arquitectura y validación del alcance. El proyecto está estructurando sus bases para la implementación de módulos de gestión, IA, seguridad y auditoría.
 
-- Definición de alcance.
-- Estructuración de la arquitectura.
-- Validación de tecnologías.
-- Diseño de procesos básicos.
-- Preparación para la implementación de módulos funcionales.
-
-## 11. Universidad
+## Universidad
 
 Universidad de San Buenaventura
 
-## 12. Información del Proyecto
+## Información del Proyecto
 
 - Nombre: JURICTAP
-- Tipo: Sistema inteligente de gestión para consultorios jurídicos universitarios
-- Enfoque: Arquitectura orientada a servicios, seguridad, trazabilidad y apoyo con IA
+- Tipo: Sistema inteligente de gestión
+- Dominio: Consultorios jurídicos universitarios
+- Enfoque: IA, seguridad, trazabilidad, gestión documental y digitalización
 
-## 13. Roadmap Sugerido
+## Roadmap
 
-### Fase 1: Base del sistema
-- Registro de usuarios
-- Autenticación y roles
-- Gestión básica de casos
-- Persistencia con MySQL
+### Fase 1: Base del Sistema
+- Registro y autenticación de usuarios
+- Gestión de roles
+- Casos y solicitudes
+- Base de datos relacional
 
 ### Fase 2: Automatización y IA
-- Procesamiento de documentos
-- Recomendaciones legales asistidas por IA
-- Categorización de casos
+- Clasificación automática de casos
+- Soporte con IA jurídica
+- Procesamiento documental
+- Recomendaciones inteligentes
 
-### Fase 3: Auditoría y analítica
-- Reportes avanzados
+### Fase 3: Auditoría y Analítica
+- Dashboards de gestión
+- Reportes institucionales
 - Trazabilidad completa
-- KPI de gestión y desempeño
+- KPI de operación
 
-### Fase 4: Escalabilidad y evolución
+### Fase 4: Escalabilidad
 - Modularización funcional
-- Mejoras de seguridad y observabilidad
-- Integración con otros sistemas institucionales
+- Mejoras de observabilidad
+- Integración con otros sistemas
+- Evolución hacia una arquitectura más robusta
 
-## 14. Conclusión
+## Conclusión
 
-JURICTAP representa una propuesta sólida de arquitectura para digitalizar la gestión de consultorios jurídicos universitarios. Su diseño combina tecnología, seguridad, trazabilidad y soporte inteligente para transformar la atención jurídica en un proceso más eficiente, ordenado y profesional.
+JURICTAP representa una solución moderna y estratégica para la digitalización de la gestión jurídica universitaria. Su enfoque combina tecnología, seguridad, trazabilidad y asistencia inteligente para mejorar la calidad de la atención, la organización del conocimiento y la eficiencia del consultorio.
 
-La solución no solo mejora la administración de casos, sino que también fortalece la experiencia académica y la calidad de la asesoría jurídica brindada por la universidad.
+Este proyecto no solo optimiza la administración de casos, sino que también fortalece la experiencia académica y la capacidad institucional para brindar un servicio jurídico más seguro, ordenado y profesional.
 
 ---
 
-Proyecto: JURICTAP
-Universidad: Universidad de San Buenaventura
+<p align="center">
+  <b>Proyecto:</b> JURICTAP
+  <br>
+  <b>Universidad:</b> Universidad de San Buenaventura
+</p>

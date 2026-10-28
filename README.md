@@ -1,12 +1,61 @@
 # JURICTAP
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Project-JURICTAP-0A7EA4?style=for-the-badge&logo=node.js" alt="JURICTAP Project" />
+  <img src="https://img.shields.io/badge/Stack-Node.js%20%7C%20Express%20%7C%20MySQL-2E7D32?style=for-the-badge" alt="Tech Stack" />
+  <img src="https://img.shields.io/badge/AI-Jurídica-FFB000?style=for-the-badge" alt="AI Jurídica" />
+  <img src="https://img.shields.io/badge/Status-Sprint%200-FF6F61?style=for-the-badge" alt="Status" />
+</p>
+
 Sistema Inteligente de Gestión para Consultorios Jurídicos Universitarios
 
-## 1. Visión General
+## Descripción
 
-JURICTAP es una plataforma diseñada para digitalizar y optimizar la gestión de casos jurídicos en consultorios universitarios. Su propósito es centralizar la recepción, seguimiento y resolución de solicitudes legales, integrando inteligencia artificial, trazabilidad documental, control de auditoría y apoyo académico para estudiantes, docentes y tutores.
+JURICTAP es una plataforma tecnológica orientada a optimizar la gestión de casos jurídicos dentro de consultorios universitarios. Su propósito es centralizar el manejo de solicitudes, documentos, seguimiento de casos, trazabilidad de decisiones y asistencia inteligente mediante IA aplicada al ámbito jurídico.
 
-La solución busca mejorar la eficiencia operativa del consultorio, reducir tiempos de atención manual y fortalecer la calidad del servicio jurídico mediante procesos estructurados, automatizados y supervisados.
+La solución está diseñada para apoyar a estudiantes, docentes, tutores y personal administrativo en la administración de procesos legales académicos, mejorando la eficiencia operativa, la transparencia y la calidad del servicio.
+
+## Visión
+
+Transformar la gestión jurídica universitaria mediante una solución digital, segura, escalable y orientada a resultados, integrando tecnología, análisis de información y apoyo inteligente para la toma de decisiones.
+
+## Objetivos
+
+- Digitalizar el proceso de atención de solicitudes jurídicas.
+- Centralizar la información de casos y documentos.
+- Mejorar la trazabilidad y la auditoría de cada gestión.
+- Implementar asistencia inteligente con IA jurídica.
+- Optimizar la coordinación entre usuarios, responsables y áreas administrativas.
+- Fortalecer la seguridad, calidad y confiabilidad del servicio.
+
+## Problema de Negocio
+
+Los consultorios jurídicos universitarios suelen operar con procesos fragmentados y poco estructurados. Esto genera:
+
+- duplicidad de información,
+- pérdida de trazabilidad,
+- retrasos en la atención,
+- dificultad para priorizar casos,
+- manejo manual de documentos,
+- baja visibilidad del estado de las solicitudes,
+- falta de indicadores para medir rendimiento y cumplimiento.
+
+JURICTAP propone una solución integral para institucionalizar la gestión jurídica con un enfoque profesional, ordenado y tecnológico.
+
+## Arquitectura de la Solución
+
+La arquitectura del sistema está diseñada en capas para separar responsabilidades, facilitar la escalabilidad y permitir una evolución continua del producto.
+
+```mermaid
+flowchart LR
+    A[Usuarios / Consultorio / Administración] --> B[Frontend]
+    B --> C[API REST]
+    C --> D[Servicios de Negocio]
+    D --> E[(MySQL)]
+    D --> F[Motor de IA Jurídica]
+    D --> G[Servicio de Auditoría]
+    G --> E
+    F --> Eonsultorio, reducir tiempos de atención manual y fortalecer la calidad del servicio jurídico mediante procesos estructurados, automatizados y supervisados.
 
 ## 2. Objetivo del Proyecto
 
